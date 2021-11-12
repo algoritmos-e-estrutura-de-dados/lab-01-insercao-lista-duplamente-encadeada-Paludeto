@@ -14,37 +14,35 @@ class Lista:
         self.tail = None
 
     def append(self, node):
-        """
-        Método para inserir um elemento no final
 
-        :param node:
-        :return:
-        """
         if self.init is None:
-            self.init = node
-            self.tail = node
-            return
+            new_node = Node(node)
+            new_node.prev = None;
+            self.init = new_node
+        else: 
+            new_node = Node(node)
+            last = self.init
+            while last.next:
+                last = last.next
+            last.next = new_node
+            new_node.prev = last
+            new_node.next = None
 
-        self.tail.next = node
-        node.prev = self.tail
+    def prepend(self, node):
 
-
-    def add(self, node):
-        """
-        Inserir um elemento sempre no inicio da lista
-
-        :param node:
-        :return:
-        """
         if self.init is None:
-            self.init = node
-            self.tail = node
-            return
-
-        node.next = self.init
-        self.init = node
+            new_node = Node(node)
+            new_node.prev = None
+            self.init = new_node
+        else: 
+            new_node = Node(node)
+            self.init.prev = new_node
+            new_node.next = self.init
+            self.init = new_node
+            new_node.prev = None    
 
     def __str__(self):
+        
         str_aux = '['
         node_aux = self.init
         while(node_aux is not None):
@@ -53,12 +51,19 @@ class Lista:
         str_aux += ']'
         return str_aux
 
+    def print_list(self): #criado para debug
+        
+        last = self.init
+        while last:
+            print(last.x)
+            last = last.next
+
 
 if __name__ == '__main__':
     lista = Lista()
-    lista.add(Node(x=27))
-    lista.add(Node(x=1))
-    print(lista)
-    lista.append(Node(x=5))
-    lista.append(Node(x=19))
-    print(lista)
+    lista.append(Node(27))
+    lista.append(Node(1))
+    lista.print_list()
+    lista.prepend(Node(5))
+    lista.prepend(Node(19))
+    lista.print_list()
