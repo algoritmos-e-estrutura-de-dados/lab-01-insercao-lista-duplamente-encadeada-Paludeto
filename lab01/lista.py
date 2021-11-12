@@ -27,6 +27,16 @@
 #   `'.:::::::::::88888888888.88:::::::::'
 #         `':::_:' -- '' -'-' `':_::::'`
 
+def main():
+    lista = Lista()
+    lista.append(Node(27))
+    lista.append(Node(1))
+    lista.print_list()
+    lista.prepend(Node(5))
+    lista.prepend(Node(19))
+    lista.print_list()
+
+
 
 
 class Node:
@@ -90,10 +100,4 @@ class Lista:
 
 
 if __name__ == '__main__':
-    lista = Lista()
-    lista.append(Node(27))
-    lista.append(Node(1))
-    lista.print_list()
-    lista.prepend(Node(5))
-    lista.prepend(Node(19))
-    lista.print_list()
+    main()
