@@ -37,8 +37,6 @@ def main():
     lista.print_list()
 
 
-
-
 class Node:
 
     def __init__(self, x):
